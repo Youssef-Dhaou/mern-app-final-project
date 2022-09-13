@@ -29,7 +29,7 @@ const formSumbit =(e)=>{
     name, email, message
   }
 
-  axios.post("http://localhost:5000/api/forma",data)
+  axios.post("https://mern-app-final.herokuapp.com/api/forma",data)
   .then(res=>{
     setEmailSent(true)
   },resetform()).catch(()=>{
