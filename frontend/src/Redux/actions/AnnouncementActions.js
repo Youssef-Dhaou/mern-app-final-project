@@ -5,7 +5,7 @@ import {ADD_ANNOUNCE_FAIL, ADD_ANNOUNCE_SUCCESS, ADD_COMMENT, DELETE_ANNOUNCE_FA
 export const getAllAnnounces = (query)=> async dispatch=>{
     dispatch({type:GET_ANNOUNCE_LOADING})
     try {
-        const response=await axios.get(`http://localhost:5000/announcements/?${query}`)
+        const response=await axios.get(`https://mern-app-final.herokuapp.com/announcements/?${query}`)
         dispatch({type: GET_ANNOUNCE_SUCCESS, payload:response.data})
     } catch (error) {
         console.log(error)
@@ -19,7 +19,7 @@ export const addAnnounce = (newAnnounce, navigate)=> async dispatch=>{
     console.log(newAnnounce)
     const token=localStorage.getItem("token")
       try {
-           await axios.post("http://localhost:5000/announcements/addAnnouncement", newAnnounce,{ headers: { Authorization: `Bearer ${token}` } })
+           await axios.post("https://mern-app-final.herokuapp.com/announcements/addAnnouncement", newAnnounce,{ headers: { Authorization: `Bearer ${token}` } })
            dispatch({type:ADD_ANNOUNCE_SUCCESS})
            dispatch(getAllAnnounces())
            navigate("/announcelist")
@@ -33,7 +33,7 @@ export const addAnnounce = (newAnnounce, navigate)=> async dispatch=>{
   export const getOneAnnounce=(id) => async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/announcements/oneAnnounce/${id}`
+        `https://mern-app-final.herokuapp.com/announcements/oneAnnounce/${id}`
       );
       dispatch({type:GET_ONE_ANNOUNCE_SUCCESS,payload:response.data.oneAnnounce})
     } catch (error) {
@@ -47,7 +47,7 @@ export const addAnnounce = (newAnnounce, navigate)=> async dispatch=>{
   export const editAnnounce=(id,newAnnounce,navigate) => async (dispatch) => {
     try {
      await axios.put(
-        `http://localhost:5000/announcements/${id}`,newAnnounce
+        `https://mern-app-final.herokuapp.com/announcements/${id}`,newAnnounce
       );
       dispatch({type:UPDATE_ONE_ANNOUNCE_SUCCESS})
       dispatch(getAllAnnounces())
@@ -61,7 +61,7 @@ export const addAnnounce = (newAnnounce, navigate)=> async dispatch=>{
   export const deleteAnnounce = (id)=> async dispatch=>{
     const token = localStorage.getItem('token')
     try {
-         await axios.delete(`http://localhost:5000/announcements/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+         await axios.delete(`https://mern-app-final.herokuapp.com/announcements/${id}`, { headers: { Authorization: `Bearer ${token}` } })
          dispatch({type:DELETE_ANNOUNCE_SUCCESS})
          dispatch(getAllAnnounces())
         } catch (error) {
@@ -75,7 +75,7 @@ export const addAnnounce = (newAnnounce, navigate)=> async dispatch=>{
 export const addLikes = (id)=> async dispatch=>{    
   const token=localStorage.getItem("token")
   try {
-    const response = await axios.put(`http://localhost:5000/announcements/like/${id}`,"" ,{ headers: { Authorization: `Bearer ${token}` } });
+    const response = await axios.put(`https://mern-app-final.herokuapp.com/announcements/like/${id}`,"" ,{ headers: { Authorization: `Bearer ${token}` } });
     dispatch({type: UPDATE_LIKES, payload:{id, likes: response.data}})
   } catch (error) {
     console.log(error.message)
@@ -87,7 +87,7 @@ export const addLikes = (id)=> async dispatch=>{
   export const removeLikes = (id)=> async dispatch=>{
     const token=localStorage.getItem("token")
     try {
-      const response = await axios.put(`http://localhost:5000/announcements/unlike/${id}`,"",{ headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.put(`https://mern-app-final.herokuapp.com/announcements/unlike/${id}`,"",{ headers: { Authorization: `Bearer ${token}` } });
       dispatch({type: UPDATE_LIKES, payload:{id, likes: response.data}})
     } catch (error) {
       console.log(error.message)
@@ -102,7 +102,7 @@ export const addComment = (id, text)=>async dispatch=>{
   const token = localStorage.getItem("token")
 try {
   console.log(text);
- const response = await axios.post(`http://localhost:5000/announcements/comment/${id}`,text,{ headers: { Authorization: `Bearer ${token}` } });
+ const response = await axios.post(`https://mern-app-final.herokuapp.com/announcements/comment/${id}`,text,{ headers: { Authorization: `Bearer ${token}` } });
  console.log(response);
  dispatch({type:ADD_COMMENT, payload:{id, comments: response.data }})
 } catch (error) {
@@ -116,7 +116,7 @@ try {
 export const deleteComment = (AnnounceId, commentId) => async dispatch => {  
   const token = localStorage.getItem("token")
   try {
-    await axios.delete(`http://localhost:5000/announcements/comment/${AnnounceId}/${commentId}`, { headers: { Authorization: `Bearer ${token}`} });
+    await axios.delete(`https://mern-app-final.herokuapp.com/announcements/comment/${AnnounceId}/${commentId}`, { headers: { Authorization: `Bearer ${token}`} });
 
     dispatch({
       type: REMOVE_COMMENT,
@@ -137,7 +137,7 @@ export const deleteComment = (AnnounceId, commentId) => async dispatch => {
 export const deleteOneAnnounce = (id)=> async dispatch=>{
   const token = localStorage.getItem('token')
   try {
-       await axios.delete(`http://localhost:5000/announcements/delete/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+       await axios.delete(`https://mern-app-final.herokuapp.com/announcements/delete/${id}`, { headers: { Authorization: `Bearer ${token}` } })
        dispatch({type:DELETE_ONE_ANNOUNCE_SUCCESS})
        dispatch(getAllAnnounces())
       } catch (error) {
