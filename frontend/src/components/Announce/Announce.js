@@ -39,8 +39,8 @@ const currentUser = useSelector(state=>state.userReducer.currentUser)
   <div className='actions'> 
   {currentUser.role==="admin"?
      <i id="iconB" className="fa-solid fa-trash-can trash" onClick={()=>dispatch(deleteAnnounce(el._id))}></i>:
-    currentUser._id == el.user._id? <i id="iconB" className="fa-solid fa-trash-can trash" onClick={()=>dispatch(deleteOneAnnounce(el._id))}></i>: null}
-{currentUser._id == el.user._id?<Link to={`/editannounce/${el._id}`}><i id="iconB" className="fa-solid fa-pen-to-square"></i></Link>: currentUser.role=="admin"?
+    currentUser._id === el.user._id? <i id="iconB" className="fa-solid fa-trash-can trash" onClick={()=>dispatch(deleteOneAnnounce(el._id))}></i>: null}
+{currentUser._id === el.user._id?<Link to={`/editannounce/${el._id}`}><i id="iconB" className="fa-solid fa-pen-to-square"></i></Link>: currentUser.role==="admin"?
 <Link to={`/editannounce/${el._id}`}><i id="iconB" className="fa-solid fa-pen-to-square"></i></Link>: null}
  <Link to ={`/addannounce`}> <i id="iconB" className="fa-solid fa-circle-plus"></i></Link>
  </div>

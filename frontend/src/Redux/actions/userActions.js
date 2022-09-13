@@ -45,7 +45,7 @@ export const signinUser = (user, navigate) => async (dispatch) => {
     export const editUser=(editUser,navigate) => async (dispatch) => {
         const token = localStorage.getItem("token")
         try {
-          const response = await axios.put(
+           await axios.put(
             "http://localhost:5000/users/editUser",editUser, {headers:{Authorization:`Bearer ${token}`}}
           );
           dispatch({type:UPDATE_ONE_USER_SUCCESS})
@@ -90,7 +90,7 @@ export const signinUser = (user, navigate) => async (dispatch) => {
 
     export const deleteUser =(id)=> async dispatch=>{
       try {
-           const response=await axios.delete(`http://localhost:5000/users/${id}`)
+           await axios.delete(`http://localhost:5000/users/${id}`)
            dispatch({type:DELETE_USER_SUCCESS})
            dispatch(getAllAnnounces())
            dispatch(getAllUsers())
@@ -106,7 +106,7 @@ export const signinUser = (user, navigate) => async (dispatch) => {
   export const bannedUser=(id,banned) => async (dispatch) => {
     const token = localStorage.getItem("token")
     try {
-      const response = await axios.put(
+       await axios.put(
         `http://localhost:5000/users/bannedUser/${id}`,banned, {headers:{Authorization:`Bearer ${token}`}}
       );
       dispatch({type:BANNED_USER_SUCCESS, payload: {id, banned}})

@@ -13,7 +13,7 @@ const oneAnnounce = useSelector(state=>state.AnnounceReducer.oneAnnounce)
 
     useEffect(() => {
         dispatch(getOneAnnounce(id));
-      }, []);
+      }, [dispatch, id]);
 
    
 useEffect(() => {

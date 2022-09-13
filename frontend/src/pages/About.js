@@ -2,7 +2,6 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { FcApproval, FcGlobe } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import Footer from "../components/footer/Footer";
 import "./About.css";
 
 function About () {

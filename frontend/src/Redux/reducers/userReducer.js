@@ -1,4 +1,4 @@
-import { BANNED_USER_FAIL, BANNED_USER_SUCCESS, DELETE_USER_FAIL, GET_CURRENT_USER_FAIL, GET_CURRENT_USER_SUCCESS, GET_ONE_USER_FAIL, GET_ONE_USER_SUCCESS, GET_USERS_FAIL, GET_USERS_LOADING, GET_USERS_SUCCESS, LOGOUT, SIGNIN_USER_FAIL, SIGNIN_USER_SUCCESS, SIGNUP_USER_FAIL, SIGNUP_USER_SUCCESS, UPDATE_ONE_USER_FAIL } from "../contants/userTypes"
+import { BANNED_USER_FAIL, BANNED_USER_SUCCESS, DELETE_USER_FAIL, GET_CURRENT_USER_FAIL, GET_CURRENT_USER_SUCCESS, GET_ONE_USER_SUCCESS, GET_USERS_FAIL, GET_USERS_LOADING, GET_USERS_SUCCESS, LOGOUT, SIGNIN_USER_FAIL, SIGNIN_USER_SUCCESS, SIGNUP_USER_FAIL, SIGNUP_USER_SUCCESS, UPDATE_ONE_USER_FAIL } from "../contants/userTypes"
 const initialState={
   loading: false,
   errors :null,
@@ -44,7 +44,7 @@ case DELETE_USER_FAIL: return {...state, errors: payload}
 
 //Banned user
 
-case BANNED_USER_SUCCESS: return {...state, AllUsers:state.AllUsers.map(el=>el._id==payload.id?{...el, isBanned:payload.banned}: el)}
+case BANNED_USER_SUCCESS: return {...state, AllUsers:state.AllUsers.map(el=>el._id===payload.id?{...el, isBanned:payload.banned}: el)}
 case BANNED_USER_FAIL: return {...state, errors: payload}
                  
 
