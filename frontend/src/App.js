@@ -41,7 +41,7 @@ function App() {
     return () => {
       clearTimeout(timeId)
     }
-  }, [errors]);
+  }, );
 
   // If show is false the component will return null and stop here
   
