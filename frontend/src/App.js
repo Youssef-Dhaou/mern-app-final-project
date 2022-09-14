@@ -35,7 +35,7 @@ function App() {
    useEffect(() => {
     const timeId = setTimeout(() => {
       // After 3 seconds set the show value to false
-      swal ("Oops" ,  errors.response.data.msg ,  "error" )
+      swal ("Oops" ,  errors.message ,  "error" )
     }, 500)
 
     return () => {

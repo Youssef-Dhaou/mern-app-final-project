@@ -15,8 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
+
+
 connectDB()
-app.use(cors({origin:"https://main--mern-client-app.netlify.app"}))
+app.use(cors())
 app.use("/users", require("./routes/userRoutes"))
 app.use("/comments", require("./routes/CommentRoutes"))
 app.use("/announcements", require("./routes/announcementRouter"))
