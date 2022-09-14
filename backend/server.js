@@ -4,6 +4,8 @@ const nodemailer = require ('nodemailer')
 const bodyParser = require('body-parser')
 const connectDB= require("./config/connectDB")
 require('dotenv').config()
+const path = require('path')
+
 
 // console.log(process.env.MONGO_URI)
 
@@ -24,7 +26,12 @@ app.use("/comments", require("./routes/CommentRoutes"))
 app.use("/announcements", require("./routes/announcementRouter"))
 
 
-
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("frontend/build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend','build','index.html'));
+    });
+  }
 
 app.post("/api/forma", (req, res) =>{
 let data = req.body
