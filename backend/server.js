@@ -26,13 +26,6 @@ app.use("/comments", require("./routes/CommentRoutes"))
 app.use("/announcements", require("./routes/announcementRouter"))
 
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("frontend/build"));
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend','build','index.html'));
-    });
-  }
-
 app.post("/api/forma", (req, res) =>{
 let data = req.body
 let smtpTransport= nodemailer.createTransport({
