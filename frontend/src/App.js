@@ -32,16 +32,12 @@ function App() {
 
 
 
-   useEffect(() => {
-    const timeId = setTimeout(() => {
+    errors && setTimeout(() => {
       // After 3 seconds set the show value to false
       swal ("Oops" ,  errors.message ,  "error" )
     }, 500)
 
-    return () => {
-      clearTimeout(timeId)
-    }
-  }, );
+
 
   // If show is false the component will return null and stop here
   
